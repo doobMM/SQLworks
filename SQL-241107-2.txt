@@ -1,0 +1,14 @@
+/* ME */
+SELECT COUNT(*) AS FISH_COUNT
+  FROM FISH_INFO
+ WHERE (FISH_TYPE = 0) OR (FISH_TYPE = 1)
+
+/* GPT */
+SELECT COUNT(*) AS FISH_COUNT
+FROM FISH_INFO FI
+JOIN FISH_NAME_INFO FNI ON FI.FISH_TYPE = FNI.FISH_TYPE
+WHERE FNI.FISH_NAME IN ('BASS', 'SNAPPER');
+
+/* 위의 쿼리가 문제가 될 수 있는 이유는 FISH_TYPE 값이 0과 1일 때 그것들이 실제로 BASS와 SNAPPER에 해당하는지 확실하지 않기 때문입니다. FISH_TYPE 숫자값이 어떤 물고기 이름에 해당하는지는 FISH_NAME_INFO 테이블을 통해 확인해야 합니다.
+
+만약 FISH_TYPE = 0이 BASS, FISH_TYPE = 1이 SNAPPER에 해당한다고 확신할 수 있다면 해당 쿼리가 유효할 수 있지만, 문제 설명에 이 매핑이 명시되지 않았습니다. */
